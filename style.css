@@ -1,0 +1,27 @@
+
+* {
+    background-color: darkslategrey;
+}
+
+#chart1 {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#counterDiv {
+    display: flex;
+    justify-content: right;
+}
+
+p {
+    font-size: 4rem;
+    margin: 0 0;
+    margin-left: 2rem;
+}
+
