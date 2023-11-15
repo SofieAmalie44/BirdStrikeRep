@@ -3,15 +3,49 @@
     background-color: darkslategrey;
 }
 
+html {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 30px;
+}
+
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+nav {
+    position: fixed;
+}
+
+
+p {
+    font-size: 35px;
+}
+
+
+/* Bird-count-striker*/
+.counter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+#counter-bird-strike {
+    font-size: 100px;
+    margin: 0 0;
+    margin-left: 2rem;
+}
+
+
+/*Bird striker per year, chart 1*/
 .yearChart {
     display: flex;
     justify-content: flex-start;
-    margin: 70px;
+    margin: 10px;
     padding: 10px;
-
-
+    height: 100vh;
 }
-
 
 #chart1 {
     max-width: 850px;
@@ -21,18 +55,18 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* */
+/* Bird strike per month in total from 1990-2022 */
 .monthChart {
     display: flex;
     flex-direction: row-reverse;
     margin: 70px;
     padding: 10px;
+    height: 100vh;
 }
-
 
 #chart2 {
     width: 100%;
-    max-width: 600px;
+    max-width: 850px;
     margin: 20px auto;
     background-color: transparent;
     border-radius: 8px;
@@ -40,17 +74,4 @@
 }
 
 
-
-
-.counter {
-    display: flex;
-    justify-content: flex-end;
-}
-
-
-p {
-    font-size: 4rem;
-    margin: 0 0;
-    margin-left: 2rem;
-}
 
