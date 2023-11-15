@@ -1,9 +1,8 @@
 // main.js
+const counterForBirdStrikes = document.querySelector("#counter-bird-strike")
 const birdCounter = function () {
     let sum = 0;
     let speed = 80
-    const paragraph = document.createElement("p");
-    document.querySelector("#counterDiv").appendChild(paragraph);
 
     const countUpTo = 267278;
 
@@ -16,7 +15,7 @@ const birdCounter = function () {
             speed = 4;
         }
         setTimeout(() => {
-            paragraph.textContent = currentCount;
+            counterForBirdStrikes.textContent = currentCount;
 
             if (currentCount < countUpTo) {
                 countWithDelay(currentCount + 1);
