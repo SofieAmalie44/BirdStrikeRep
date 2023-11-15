@@ -26,8 +26,9 @@ function birdCounter () {
     };
     countWithDelay(sum);
 }
-
+// Initialize the counter
 birdCounter();
+
 //Check Scroll position
 let alreadyHappened = 0
 function checkScrollPosition () {
@@ -36,7 +37,6 @@ function checkScrollPosition () {
 
     if (window.scrollY >= animatedChartPosition && alreadyHappened === 0) {
         console.log("kkojwqeokjqw")
-        animateTheChart(delayBetweenPoints)
         alreadyHappened = 1
         setTimeout(() => {
             alreadyHappened = 0
@@ -146,7 +146,6 @@ const ctx2 = document.querySelector('#chart2');
 const totalDuration = 2000;
 const delayBetweenPoints = totalDuration / 4;
 
-function animateTheChart(delayBetweenPoints) {
     const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
     const animation = {
         x: {
@@ -176,10 +175,6 @@ function animateTheChart(delayBetweenPoints) {
             }
         }
     };
-    return animation;
-}
-
-
 
 // Creation of Chart
 new Chart(ctx2, {
@@ -231,12 +226,14 @@ new Chart(ctx2, {
                 }
             }
         },
-        animation: animateTheChart(delayBetweenPoints),
+        animation: animation,
         interaction: {
             intersect: false
         }
     }
 });
+
+
 
 
 // Humans Killed Chart
