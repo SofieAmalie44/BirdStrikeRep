@@ -2,16 +2,16 @@
 const counterForBirdStrikes = document.querySelector("#counter-bird-strike")
 
 // Counter for bird strikes
-const birdCounter = function () {
-    let sum = 0;
-    let speed = 80
+function birdCounter () {
+    let sum = 1;
+    let speed = 1000
     const countUpTo = 267278;
 
     const countWithDelay = (currentCount) => {
         // Adjust the speed as needed
-        if (currentCount > 100 && currentCount < 200) {
-            speed = 20;
-        } else if (currentCount > 200 && currentCount < 300) {
+        if (currentCount > 10 && currentCount < 100) {
+            speed = 100;
+        } else if (currentCount > 100 && currentCount < 300) {
             speed = 10;
         } else if (currentCount > 300) {
             speed = 4;
@@ -28,6 +28,26 @@ const birdCounter = function () {
 }
 
 birdCounter();
+//Check Scroll position
+let alreadyHappened = 0
+function checkScrollPosition () {
+
+    const animatedChartPosition = 200
+
+    if (window.scrollY >= animatedChartPosition && alreadyHappened === 0) {
+        console.log("kkojwqeokjqw")
+        animateTheChart(delayBetweenPoints)
+        alreadyHappened = 1
+        setTimeout(() => {
+            alreadyHappened = 0
+        }, 10000)
+    }
+}
+
+window.addEventListener("scroll",() => {
+    checkScrollPosition()
+})
+
 
 // Bird Strikes Per Year Chart
 
@@ -90,6 +110,7 @@ new Chart(ctx, {
             x: {
                 ticks: {
                     color: 'white',
+                    // Function from chart.js documentation
                     callback: function(val, index) {
                         // Hide every 2nd tick label
                         return index % 2 === 0 ? this.getLabelForValue(val) : '';
@@ -125,35 +146,40 @@ const ctx2 = document.querySelector('#chart2');
 const totalDuration = 2000;
 const delayBetweenPoints = totalDuration / 4;
 
-const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
-const animation = {
-    x: {
-        type: 'number',
-        easing: 'linear',
-        duration: delayBetweenPoints,
-        from: NaN, // the point is initially skipped
-        delay(ctx) {
-            if (ctx.type !== 'data' || ctx.xStarted) {
-                return 0;
+function animateTheChart(delayBetweenPoints) {
+    const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    const animation = {
+        x: {
+            type: 'number',
+            easing: 'linear',
+            duration: delayBetweenPoints,
+            from: NaN, // the point is initially skipped
+            delay(ctx) {
+                if (ctx.type !== 'data' || ctx.xStarted) {
+                    return 0;
+                }
+                ctx.xStarted = true;
+                return ctx.index * delayBetweenPoints;
             }
-            ctx.xStarted = true;
-            return ctx.index * delayBetweenPoints;
-        }
-    },
-    y: {
-        type: 'number',
-        easing: 'linear',
-        duration: delayBetweenPoints,
-        from: previousY,
-        delay(ctx) {
-            if (ctx.type !== 'data' || ctx.yStarted) {
-                return 0;
+        },
+        y: {
+            type: 'number',
+            easing: 'linear',
+            duration: delayBetweenPoints,
+            from: previousY,
+            delay(ctx) {
+                if (ctx.type !== 'data' || ctx.yStarted) {
+                    return 0;
+                }
+                ctx.yStarted = true;
+                return ctx.index * delayBetweenPoints;
             }
-            ctx.yStarted = true;
-            return ctx.index * delayBetweenPoints;
         }
-    }
-};
+    };
+    return animation;
+}
+
+
 
 // Creation of Chart
 new Chart(ctx2, {
@@ -205,12 +231,13 @@ new Chart(ctx2, {
                 }
             }
         },
-        animation,
+        animation: animateTheChart(delayBetweenPoints),
         interaction: {
             intersect: false
         }
     }
 });
+
 
 // Humans Killed Chart
 /*
