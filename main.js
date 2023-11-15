@@ -5,7 +5,6 @@ const counterForBirdStrikes = document.querySelector("#counter-bird-strike")
 const birdCounter = function () {
     let sum = 0;
     let speed = 80
-
     const countUpTo = 267278;
 
     const countWithDelay = (currentCount) => {
@@ -23,17 +22,105 @@ const birdCounter = function () {
             if (currentCount < countUpTo) {
                 countWithDelay(currentCount + 1);
             }
-        }, speed); // Adjust the delay time (in milliseconds) as needed
+        }, speed);
     };
-
     countWithDelay(sum);
 }
 
 birdCounter();
 
-console.log(data);
+// Bird Strikes Per Year Chart
 
-const ctx = document.querySelector('#chart2');
+// Format Data
+let arrayWithYears = [];
+let arrayWithDataForYears = [];
+function formatDataForYear () {
+
+    yearData.forEach((year) => {
+        arrayWithYears.push(year.INCIDENT_YEAR)
+        arrayWithDataForYears.push(year.amount)
+    })
+}
+formatDataForYear()
+
+const ctx = document.querySelector('#chart1');
+
+// Create Chart
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: arrayWithYears,
+        datasets: [{
+            label: 'Bird strikes',
+            data: arrayWithDataForYears,
+            borderWidth: 4,
+            borderColor: "#70db70"
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Bird strikes per year',
+                position: 'top',
+                color: 'white'
+            },
+            legend: {
+                fontColor: "white",
+                position: 'right'
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    color: 'white',
+
+                },
+                color: "white",
+                beginAtZero: true,
+                grid: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'count of bird strikes',
+                    color: 'white'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white',
+                    callback: function(val, index) {
+                        // Hide every 2nd tick label
+                        return index % 2 === 0 ? this.getLabelForValue(val) : '';
+                    },
+                },
+                grid: {
+                    display: false
+                }
+            }
+        },
+    }
+});
+
+
+// Bird Strikes Per Month
+
+// Format Data
+let arrayWithXAndYDataPointsForPerMonth = [];
+function formatPerMonthData () {
+
+    dataPerMonth.forEach((month, index) => {
+        let monthAsObject = {};
+        monthAsObject.x = index
+        monthAsObject.y = month.amount
+        arrayWithXAndYDataPointsForPerMonth.push(monthAsObject)
+    })
+}
+formatPerMonthData();
+
+// Create Animation For Chart
+const ctx2 = document.querySelector('#chart2');
 
 const totalDuration = 2000;
 const delayBetweenPoints = totalDuration / 4;
@@ -68,66 +155,64 @@ const animation = {
     }
 };
 
-const counts = data.map(item => item["count(INDEX_NR)"]);
-
-        new Chart(ctx, {
-            scaleFontColor: "white",
-            type: 'line',
-            data: {
-                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAJ', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-                datasets: [{
-                    label: 'Bird strikes',
-                    data: [{x: 0, y: 8928},{x:1, y: 8598},{x:2, y:13234},{x:3,y:19166},{x:4,y:26518},{x:5,y:22704},{x:6,y:34950},{x:7,y:37395},{x:8,y:34890},{x:9,y:32876},{x:10,y:18141},{x:11,y:10469}],
-                    borderWidth: 4,
-                    borderColor: "#70db70"
-                }]
+// Creation of Chart
+new Chart(ctx2, {
+    scaleFontColor: "white",
+    type: 'line',
+    data: {
+        labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAJ', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+        datasets: [{
+            label: 'Bird strikes',
+            data: arrayWithXAndYDataPointsForPerMonth,
+            borderWidth: 4,
+            borderColor: "#70db70"
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Bird strikes per month',
+                position: 'top',
+                color: 'white'
             },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Bird strikes per month',
-                        position: 'top',
-                        color: 'white'
-                    },
-                    legend: {
-                        fontColor: "white",
-                        position: 'right'
-                    }
+            legend: {
+                fontColor: "white",
+                position: 'right'
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    color: 'white'
                 },
-                scales: {
-                    y: {
-                        ticks: {
-                            color: 'white'
-                        },
-                        beginAtZero: true,
-                        grid: {
-                            display: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'count of bird strikes',
-                            color: 'white'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: 'white'
-                        },
-                        grid: {
-                            display: false
-                        }
-                    }
+                beginAtZero: true,
+                grid: {
+                    display: false
                 },
-                animation,
-                interaction: {
-                    intersect: false
+                title: {
+                    display: true,
+                    text: 'count of bird strikes',
+                    color: 'white'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white'
+                },
+                grid: {
+                    display: false
                 }
             }
-        });
+        },
+        animation,
+        interaction: {
+            intersect: false
+        }
+    }
+});
 
-        // second chart
-
+// Humans Killed Chart
 /*
 const ctx2 = document.querySelector('#chart2');
 
@@ -184,66 +269,3 @@ new Chart(ctx2, {
 });
 
 */
-console.log(yearData);
-console.log(yearData);
-
-const ctx2 = document.querySelector('#chart1');
-
-const counts2 = yearData.map(item => item["count(INDEX_NR)"]);
-
-new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: ['1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
-        datasets: [{
-            label: 'Bird strikes',
-            data: [2105, 2510, 2650, 2624, 2704, 2821, 3025, 3554, 3802, 5113, 6002, 5822, 6216, 5990, 6559, 7235, 7248, 7735, 7624, 9495, 9899, 10109, 10909, 11408, 13688, 13778, 13333, 14738, 16205, 17344, 11622, 15593, 8362],
-            borderWidth: 4,
-            borderColor: "#70db70"
-        }]
-    },
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Bird strikes per year',
-                position: 'top',
-                color: 'white'
-            },
-            legend: {
-                fontColor: "white",
-                position: 'right'
-            }
-        },
-        scales: {
-            y: {
-                ticks: {
-                    color: 'white',
-
-                },
-                color: "white",
-                beginAtZero: true,
-                grid: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'count of bird strikes',
-                    color: 'white'
-                }
-            },
-            x: {
-                ticks: {
-                    color: 'white',
-                    callback: function(val, index) {
-                        // Hide every 2nd tick label
-                        return index % 2 === 0 ? this.getLabelForValue(val) : '';
-                    },
-                },
-                grid: {
-                    display: false
-                }
-            }
-        },
-    }
-});

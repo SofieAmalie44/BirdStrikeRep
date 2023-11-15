@@ -1,135 +1,137 @@
-let yearData =[
-    {
-        "INCIDENT_YEAR" : 1990,
-        "count(INDEX_NR)" : 2105
-    },
-    {
-        "INCIDENT_YEAR" : 1991,
-        "count(INDEX_NR)" : 2510
-    },
-    {
-        "INCIDENT_YEAR" : 1992,
-        "count(INDEX_NR)" : 2650
-    },
-    {
-        "INCIDENT_YEAR" : 1993,
-        "count(INDEX_NR)" : 2624
-    },
-    {
-        "INCIDENT_YEAR" : 1994,
-        "count(INDEX_NR)" : 2706
-    },
-    {
-        "INCIDENT_YEAR" : 1995,
-        "count(INDEX_NR)" : 2821
-    },
-    {
-        "INCIDENT_YEAR" : 1996,
-        "count(INDEX_NR)" : 3025
-    },
-    {
-        "INCIDENT_YEAR" : 1997,
-        "count(INDEX_NR)" : 3554
-    },
-    {
-        "INCIDENT_YEAR" : 1998,
-        "count(INDEX_NR)" : 3802
-    },
-    {
-        "INCIDENT_YEAR" : 1999,
-        "count(INDEX_NR)" : 5113
-    },
-    {
-        "INCIDENT_YEAR" : 2000,
-        "count(INDEX_NR)" : 6002
-    },
-    {
-        "INCIDENT_YEAR" : 2001,
-        "count(INDEX_NR)" : 5822
-    },
-    {
-        "INCIDENT_YEAR" : 2002,
-        "count(INDEX_NR)" : 6216
-    },
-    {
-        "INCIDENT_YEAR" : 2003,
-        "count(INDEX_NR)" : 5990
-    },
-    {
-        "INCIDENT_YEAR" : 2004,
-        "count(INDEX_NR)" : 6559
-    },
-    {
-        "INCIDENT_YEAR" : 2005,
-        "count(INDEX_NR)" : 7235
-    },
-    {
-        "INCIDENT_YEAR" : 2006,
-        "count(INDEX_NR)" : 7248
-    },
-    {
-        "INCIDENT_YEAR" : 2007,
-        "count(INDEX_NR)" : 7735
-    },
-    {
-        "INCIDENT_YEAR" : 2008,
-        "count(INDEX_NR)" : 7624
-    },
-    {
-        "INCIDENT_YEAR" : 2009,
-        "count(INDEX_NR)" : 9495
-    },
-    {
-        "INCIDENT_YEAR" : 2010,
-        "count(INDEX_NR)" : 9899
-    },
-    {
-        "INCIDENT_YEAR" : 2011,
-        "count(INDEX_NR)" : 10109
-    },
-    {
-        "INCIDENT_YEAR" : 2012,
-        "count(INDEX_NR)" : 10909
-    },
-    {
-        "INCIDENT_YEAR" : 2013,
-        "count(INDEX_NR)" : 11408
-    },
-    {
-        "INCIDENT_YEAR" : 2014,
-        "count(INDEX_NR)" : 13688
-    },
-    {
-        "INCIDENT_YEAR" : 2015,
-        "count(INDEX_NR)" : 13778
-    },
-    {
-        "INCIDENT_YEAR" : 2016,
-        "count(INDEX_NR)" : 13333
-    },
-    {
-        "INCIDENT_YEAR" : 2017,
-        "count(INDEX_NR)" : 14783
-    },
-    {
-        "INCIDENT_YEAR" : 2018,
-        "count(INDEX_NR)" : 16205
-    },
-    {
-        "INCIDENT_YEAR" : 2019,
-        "count(INDEX_NR)" : 17344
-    },
-    {
-        "INCIDENT_YEAR" : 2020,
-        "count(INDEX_NR)" : 11622
-    },
-    {
-        "INCIDENT_YEAR" : 2021,
-        "count(INDEX_NR)" : 15593
-    },
-    {
-        "INCIDENT_YEAR" : 2022,
-        "count(INDEX_NR)" : 8362
-    }
-]
-data = JSON.parse(yearData);
+let yearData = '[\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1990,\n' +
+    '\t\t"amount" : 2105\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1991,\n' +
+    '\t\t"amount" : 2510\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1992,\n' +
+    '\t\t"amount" : 2650\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1993,\n' +
+    '\t\t"amount" : 2624\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1994,\n' +
+    '\t\t"amount" : 2706\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1995,\n' +
+    '\t\t"amount" : 2821\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1996,\n' +
+    '\t\t"amount" : 3025\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1997,\n' +
+    '\t\t"amount" : 3554\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1998,\n' +
+    '\t\t"amount" : 3802\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 1999,\n' +
+    '\t\t"amount" : 5113\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2000,\n' +
+    '\t\t"amount" : 6002\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2001,\n' +
+    '\t\t"amount" : 5822\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2002,\n' +
+    '\t\t"amount" : 6216\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2003,\n' +
+    '\t\t"amount" : 5990\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2004,\n' +
+    '\t\t"amount" : 6559\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2005,\n' +
+    '\t\t"amount" : 7235\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2006,\n' +
+    '\t\t"amount" : 7248\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2007,\n' +
+    '\t\t"amount" : 7735\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2008,\n' +
+    '\t\t"amount" : 7624\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2009,\n' +
+    '\t\t"amount" : 9495\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2010,\n' +
+    '\t\t"amount" : 9899\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2011,\n' +
+    '\t\t"amount" : 10109\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2012,\n' +
+    '\t\t"amount" : 10909\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2013,\n' +
+    '\t\t"amount" : 11408\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2014,\n' +
+    '\t\t"amount" : 13688\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2015,\n' +
+    '\t\t"amount" : 13778\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2016,\n' +
+    '\t\t"amount" : 13333\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2017,\n' +
+    '\t\t"amount" : 14783\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2018,\n' +
+    '\t\t"amount" : 16205\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2019,\n' +
+    '\t\t"amount" : 17344\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2020,\n' +
+    '\t\t"amount" : 11622\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2021,\n' +
+    '\t\t"amount" : 15593\n' +
+    '\t},\n' +
+    '\t{\n' +
+    '\t\t"INCIDENT_YEAR" : 2022,\n' +
+    '\t\t"amount" : 8362\n' +
+    '\t}\n' +
+    ']\n'
+
+yearData = JSON.parse(yearData);
+
