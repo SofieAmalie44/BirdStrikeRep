@@ -1,19 +1,27 @@
 // main.js
 const birdCounter = function () {
     let sum = 0;
+    let speed = 80
     const paragraph = document.createElement("p");
     document.querySelector("#counterDiv").appendChild(paragraph);
 
     const countUpTo = 267278;
 
     const countWithDelay = (currentCount) => {
+        if (currentCount > 100 && currentCount < 200) {
+            speed = 20;
+        } else if (currentCount > 200 && currentCount < 300) {
+            speed = 10;
+        } else if (currentCount > 300) {
+            speed = 4;
+        }
         setTimeout(() => {
             paragraph.textContent = currentCount;
 
             if (currentCount < countUpTo) {
                 countWithDelay(currentCount + 1);
             }
-        }, 80); // Adjust the delay time (in milliseconds) as needed
+        }, speed); // Adjust the delay time (in milliseconds) as needed
     };
 
     countWithDelay(sum);
@@ -205,7 +213,8 @@ new Chart(ctx2, {
         scales: {
             y: {
                 ticks: {
-                    color: 'white'
+                    color: 'white',
+
                 },
                 color: "white",
                 beginAtZero: true,
@@ -219,7 +228,11 @@ new Chart(ctx2, {
             },
             x: {
                 ticks: {
-                    color: 'white'
+                    color: 'white',
+                    callback: function(val, index) {
+                        // Hide every 2nd tick label
+                        return index % 2 === 0 ? this.getLabelForValue(val) : '';
+                    },
                 },
                 grid: {
                     display: false
