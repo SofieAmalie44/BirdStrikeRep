@@ -1,5 +1,7 @@
 // main.js
 const counterForBirdStrikes = document.querySelector("#counter-bird-strike")
+
+// Counter for bird strikes
 const birdCounter = function () {
     let sum = 0;
     let speed = 80
@@ -7,6 +9,7 @@ const birdCounter = function () {
     const countUpTo = 267278;
 
     const countWithDelay = (currentCount) => {
+        // Adjust the speed as needed
         if (currentCount > 100 && currentCount < 200) {
             speed = 20;
         } else if (currentCount > 200 && currentCount < 300) {
@@ -15,7 +18,7 @@ const birdCounter = function () {
             speed = 4;
         }
         setTimeout(() => {
-            counterForBirdStrikes.textContent = currentCount;
+            counterForBirdStrikes.innerText = currentCount;
 
             if (currentCount < countUpTo) {
                 countWithDelay(currentCount + 1);
@@ -30,7 +33,7 @@ birdCounter();
 
 console.log(data);
 
-const ctx = document.querySelector('#chart1');
+const ctx = document.querySelector('#chart2');
 
 const totalDuration = 2000;
 const delayBetweenPoints = totalDuration / 4;
@@ -182,7 +185,7 @@ new Chart(ctx2, {
 console.log(yearData);
 console.log(yearData);
 
-const ctx2 = document.querySelector('#chart2');
+const ctx2 = document.querySelector('#chart1');
 
 const counts2 = yearData.map(item => item["count(INDEX_NR)"]);
 

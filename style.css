@@ -1,9 +1,11 @@
-
+/* Universal Design*/
 * {
     background-color: darkslategrey;
 }
 
-#chart1 {
+
+/* */
+#chart2 {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
