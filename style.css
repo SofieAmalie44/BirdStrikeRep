@@ -3,22 +3,50 @@
     background-color: darkslategrey;
 }
 
+.yearChart {
+    display: flex;
+    justify-content: flex-start;
+    margin: 70px;
+    padding: 10px;
+
+
+}
+
+
+#chart1 {
+    max-width: 850px;
+    margin: 20px auto;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
 /* */
+.monthChart {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 70px;
+    padding: 10px;
+}
+
+
 #chart2 {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
     background-color: transparent;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+
 
 
 .counter {
     display: flex;
     justify-content: flex-end;
 }
+
 
 p {
     font-size: 4rem;
