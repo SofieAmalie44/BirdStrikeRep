@@ -88,6 +88,7 @@ const counts = data.map(item => item["count(INDEX_NR)"]);
                         display: true,
                         text: 'Bird strikes per month',
                         position: 'top',
+                        color: 'white'
                     },
                     legend: {
                         fontColor: "white",
@@ -105,7 +106,8 @@ const counts = data.map(item => item["count(INDEX_NR)"]);
                         },
                         title: {
                             display: true,
-                            text: 'count of bird strikes'
+                            text: 'count of bird strikes',
+                            color: 'white'
                         }
                     },
                     x: {
@@ -206,6 +208,7 @@ new Chart(ctx2, {
                 display: true,
                 text: 'Bird strikes per year',
                 position: 'top',
+                color: 'white'
             },
             legend: {
                 fontColor: "white",
@@ -225,7 +228,8 @@ new Chart(ctx2, {
                 },
                 title: {
                     display: true,
-                    text: 'count of bird strikes'
+                    text: 'count of bird strikes',
+                    color: 'white'
                 }
             },
             x: {
