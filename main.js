@@ -234,6 +234,59 @@ new Chart(ctx2, {
 });
 
 
+    // Animal chart
+
+const ctx3 = document.querySelector('#chart3').getContext('2d');
+const chart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: [ 'Deer', 'Moose', 'Bear', 'Coyote', 'Seal', 'Dog', 'Cattle', 'Horse', 'Possum', 'Lagomorphs', 'Snake'],
+        datasets: [{
+            label: 'Animal species closer to extinction',
+            data: [ 16, 6, 4, 800, 1, 170, 12, 5, 420, 22, 140],
+            borderWidth: 4,
+            backgroundColor: "#70db70"
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Animal species struck by plane',
+                position: 'top',
+                color: 'white'
+            },
+            legend: {
+                color: "white",
+                position: 'bottom',
+            }
+        },
+        scales: {
+            y: {
+                ticks: {
+                    color: 'white'
+                },
+                beginAtZero: true,
+                grid: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'count of bird strikes',
+                    color: 'white'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white'
+                },
+                grid: {
+                    display: false
+                }
+            }
+        }
+    }
+});
 
 
 // Humans Killed Chart
