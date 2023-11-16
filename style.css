@@ -50,22 +50,74 @@ p {
     margin-left: 2rem;
 }
 
+/* Introduction animation */
+
+.introduction {
+    display: block;
+    justify-content: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: 50px;
+    padding-top: 200px;
+    width: 100%;
+    bottom: 45%;
+}
+
+#flip {
+    height: 70px;
+    overflow: hidden;
+}
+#flip > div > div {
+    color:white;
+    padding:4px 12px;
+    height:45px;
+    margin-bottom:45px;
+    display:inline-block;
+}
+
+#flip div:first-child {
+    animation: show 8s infinite;
+}
+
+#flip div div {
+    background:#70db70;
+}
+#flip div:first-child div {
+    background:#70db70;
+}
+#flip div:last-child div {
+    background:#70db70;
+}
+
+@keyframes show {
+    0% {margin-top:-270px;}
+    5% {margin-top:-180px;}
+    33% {margin-top:-180px;}
+    38% {margin-top:-90px;}
+    66% {margin-top:-90px;}
+    71% {margin-top:0px;}
+    99.99% {margin-top:0px;}
+    100% {margin-top:-270px;}
+}
+
 
 /*Bird striker per year, chart 1*/
 .yearChart {
     display: flex;
     justify-content: flex-start;
-    margin: 10px;
-    padding: 50px;
+    margin: 20px;
+    padding: 100px;
     height: 100vh;
+
 }
 
 #chart1 {
     max-width: 850px;
-    margin: 20px auto;
+    margin: 30px;
     background-color: transparent;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    justify-content: space-around;
 }
 
 /* Bird strike per month in total from 1990-2022 */
