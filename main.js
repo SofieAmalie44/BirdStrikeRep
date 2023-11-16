@@ -29,24 +29,6 @@ function birdCounter () {
 // Initialize the counter
 birdCounter();
 
-//Check Scroll position
-let alreadyHappened = 0
-function checkScrollPosition () {
-
-    const animatedChartPosition = 200
-
-    if (window.scrollY >= animatedChartPosition && alreadyHappened === 0) {
-        console.log("kkojwqeokjqw")
-        alreadyHappened = 1
-        setTimeout(() => {
-            alreadyHappened = 0
-        }, 10000)
-    }
-}
-
-window.addEventListener("scroll",() => {
-    checkScrollPosition()
-})
 
 
 // Bird Strikes Per Year Chart
@@ -143,41 +125,41 @@ formatPerMonthData();
 // Create Animation For Chart
 const ctx2 = document.querySelector('#chart2');
 
-const totalDuration = 2000;
-const delayBetweenPoints = totalDuration / 4;
+const totalDuration = 8000;
+const delayBetweenPoints = totalDuration / arrayWithXAndYDataPointsForPerMonth.length;
 
-    const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
-    const animation = {
-        x: {
-            type: 'number',
-            easing: 'linear',
-            duration: delayBetweenPoints,
-            from: NaN, // the point is initially skipped
-            delay(ctx) {
-                if (ctx.type !== 'data' || ctx.xStarted) {
-                    return 0;
-                }
-                ctx.xStarted = true;
-                return ctx.index * delayBetweenPoints;
+const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+const animation = {
+    x: {
+        type: 'number',
+        easing: 'linear',
+        duration: delayBetweenPoints,
+        from: NaN, // the point is initially skipped
+        delay(ctx) {
+            if (ctx.type !== 'data' || ctx.xStarted) {
+                return 0;
             }
-        },
-        y: {
-            type: 'number',
-            easing: 'linear',
-            duration: delayBetweenPoints,
-            from: previousY,
-            delay(ctx) {
-                if (ctx.type !== 'data' || ctx.yStarted) {
-                    return 0;
-                }
-                ctx.yStarted = true;
-                return ctx.index * delayBetweenPoints;
-            }
+            ctx.xStarted = true;
+            return ctx.index * delayBetweenPoints;
         }
-    };
+    },
+    y: {
+        type: 'number',
+        easing: 'linear',
+        duration: delayBetweenPoints,
+        from: previousY,
+        delay(ctx) {
+            if (ctx.type !== 'data' || ctx.yStarted) {
+                return 0;
+            }
+            ctx.yStarted = true;
+            return ctx.index * delayBetweenPoints;
+        }
+    }
+};
 
 // Creation of Chart
-new Chart(ctx2, {
+let chart2 = new Chart(ctx2, {
     scaleFontColor: "white",
     type: 'line',
     data: {
@@ -232,6 +214,90 @@ new Chart(ctx2, {
         }
     }
 });
+
+
+//Check Scroll position
+let alreadyHappened = 0
+function checkScrollPosition () {
+
+    const animatedChartPosition = 200
+
+    if (window.scrollY >= animatedChartPosition && alreadyHappened === 0) {
+        updateChart()
+        alreadyHappened = 1
+        setTimeout(() => {
+            alreadyHappened = 0
+        }, 10000)
+    }
+}
+
+window.addEventListener("scroll",() => {
+    checkScrollPosition()
+})
+function updateChart () {
+
+    console.log("Updating chart")
+    //Checks if chart already exists and destroys it
+    if (chart2) {
+        chart2.destroy()
+    }
+    // Recreates the chart to restart the animation
+    chart2 = new Chart(ctx2, {
+        scaleFontColor: "white",
+        type: 'line',
+        data: {
+            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAJ', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            datasets: [{
+                label: 'Bird strikes',
+                data: arrayWithXAndYDataPointsForPerMonth,
+                borderWidth: 4,
+                borderColor: "#70db70"
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Bird strikes per month',
+                    position: 'top',
+                    color: 'white'
+                },
+                legend: {
+                    fontColor: "white",
+                    position: 'right'
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        color: 'white'
+                    },
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'count of bird strikes',
+                        color: 'white'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'white'
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            animation: animation,
+            interaction: {
+                intersect: false
+            }
+        }
+    });
+}
 
 
     // Animal chart
