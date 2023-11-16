@@ -220,7 +220,7 @@ let chart2 = new Chart(ctx2, {
 let alreadyHappened = 0
 function checkScrollPosition () {
 
-    const animatedChartPosition = 200
+    const animatedChartPosition = 1750
 
     if (window.scrollY >= animatedChartPosition && alreadyHappened === 0) {
         updateChart()
