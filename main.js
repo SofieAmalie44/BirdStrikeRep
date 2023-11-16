@@ -299,10 +299,10 @@ function updateChart () {
     });
 }
 
+// Animal chart
 
-    // Animal chart
+const ctx3 = document.querySelector('#chart3');
 
-const ctx3 = document.querySelector('#chart3').getContext('2d');
 const chart3 = new Chart(ctx3, {
     type: 'bar',
     data: {
@@ -350,65 +350,7 @@ const chart3 = new Chart(ctx3, {
                     display: false
                 }
             }
-        }
-    }
-});
-
-
-// Humans Killed Chart
-/*
-const ctx2 = document.querySelector('#chart2');
-
-const countsFatality = killedData.map(item => item["count(NR_FATALITIES)"]);
-
-
-new Chart(ctx2, {
-    type: 'line',
-    data: {
-    labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAJ', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-        datasets: [{
-        label: 'number of fatalities',
-        data: countsFatality,
-        borderWidth: 4,
-        borderColor: "#70db70",
-
-    }]
-},
-    options: {
-        plugins: {
-            title: {
-                display: true,
-                text: 'Fatalities per month',
-                position: 'top',
-            },
-            legend: {
-                position: 'right'
-            }
         },
-        scales: {
-            y: {
-                ticks: {
-                    color: 'white'
-                },
-                beginAtZero: true,
-                grid: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'count of fatalities'
-                }
-            },
-            x: {
-                ticks: {
-                    color: 'white'
-                },
-                grid: {
-                    display: false
-                }
-            }
-        }
     }
 });
 
-*/
